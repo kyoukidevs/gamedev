@@ -14,7 +14,7 @@ Network.Send = function(self, Client, Name, Arguments)
 end
 
 Network.Request = function(self, Client, Name, Arguments)
-	Function:InvokeClient(Client, Name, Arguments)
+	return Function:InvokeClient(Client, Name, Arguments)
 end
 
 Network.BindEvent = function(Name, Callback)
@@ -35,13 +35,13 @@ end
 
 Remote.OnServerEvent:Connect(function(Client, Name, Arguments)
 	if EventHandlers[Name] then
-		pcall(EventHandlers[Name], Client, Arguments)
+		EventHandlers[Name](Client, Arguments)
 	end
 end)
 
 Function.OnServerInvoke = function(Client, Name, Arguments)
 	if FunctionHandlers[Name] then
-		pcall(FunctionHandlers[Name], Client, Arguments)
+		return FunctionHandlers[Name](Client, Arguments)
 	end
 end
 
