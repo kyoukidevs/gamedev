@@ -34,13 +34,13 @@ end
 
 Remote.OnClientEvent:Connect(function(Name, Arguments)
 	if EventHandlers[Name] then
-		pcall(EventHandlers[Name], Arguments)
+		EventHandlers[Name](Arguments)
 	end
 end)
 
 Function.OnClientInvoke = function(Name, Arguments)
 	if FunctionHandlers[Name] then
-		pcall(FunctionHandlers[Name], Arguments)
+		return FunctionHandlers[Name](Arguments)
 	end
 end
 
