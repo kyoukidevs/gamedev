@@ -13,7 +13,7 @@ Network.Send = function(self, Name, Arguments)
 end
 
 Network.Request = function(self, Name, Arguments)
-	Function:InvokeServer(Name, Arguments)
+	return Function:InvokeServer(Name, Arguments)
 end
 
 Network.BindEvent = function(Name, Callback)
