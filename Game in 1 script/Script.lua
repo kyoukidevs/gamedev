@@ -1,4 +1,5 @@
 -- // Simple minigame, run from tsunami to win 
+-- // Total empty & comment lines: 104, 360 - 104 = 256 lines
 
 --#region Variables
 
