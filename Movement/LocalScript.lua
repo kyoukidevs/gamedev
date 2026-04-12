@@ -394,7 +394,7 @@ function controller.new(object : Player)
 
 			-- move the character forward every frame while dash speed decreases
 			object.root.CFrame *= CFrame.new(0, 0, -distance)
-			speed -= 4
+			speed = math.max(speed - 4 * (delta * 60), 1)
 
 			local wall = checkWalls(object.root, 5)
 			if wall then
