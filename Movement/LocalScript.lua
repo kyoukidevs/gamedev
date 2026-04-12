@@ -10,7 +10,7 @@ camera feedback
 simple movement UI
 
 This script is designed to run on the client because of movement,
-camera effects, and input response that is impossible to do on server.
+camera effects, and input response that impossible to do on server.
 ]]
 
 -- variables
@@ -52,7 +52,7 @@ end
 
 local function nextKeyCode(ignore)
 	-- generate a random movement prompt key optionally excluding the previous one
-	local chars = "ABCDEFGHJKLMNPQRSTUVWXYZ"
+	local chars = "ABCDFGHJKLMNPQRSTUVWXYZ"
 
 	if ignore then
 		chars = chars:gsub(ignore.Name, "")
@@ -146,8 +146,10 @@ local function attachClimbModel(model)
 		end
 
 		-- rotate the character toward the climb surface before starting the climb game
-		local angle = math.atan2(targetPart.Position.Z, targetPart.Position.X)
-		controller.object.root.CFrame *= CFrame.Angles(0, angle, 0)
+		local root = controller.object.root
+		local offset = targetPart.Position - root.Position
+		local angle = math.atan2(offset.X, -offset.Z)
+		root.CFrame = CFrame.new(root.Position) * CFrame.Angles(0, -angle, 0)
 
 		controller.object.actions.startClimb(controller.object, targetPart, destinationPart)
 	end)
