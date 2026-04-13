@@ -1,5 +1,6 @@
 --[[ 
 Just a movement client script
+Total code lines ~380
 
 Features:
 sprinting
