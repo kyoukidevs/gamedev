@@ -31,7 +31,7 @@ local rayParams = RaycastParams.new()
 rayParams.FilterDescendantsInstances = {camera, player}
 
 -- container for UI elements
-local movementGui = Instance.new("ScreenGui", player:WaitForChild("PlayerGui", 5))
+local movementGui = Instance.new("ScreenGui", player:WaitForChild("PlayerGui"))
 movementGui.IgnoreGuiInset = true
 movementGui.ResetOnSpawn = false
 movementGui.Name = "MovementGui"
